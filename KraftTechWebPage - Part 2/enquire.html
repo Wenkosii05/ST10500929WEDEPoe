@@ -1,0 +1,157 @@
+/*
+   Musawenkosi Mnanzana 
+   WEDE PART 2 - 
+   ST10500929
+   CSS
+*/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request a free IT assessment from Kraft Technology Group.">
+  <title>Enquiry | Kraft Technology Group</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Kraft <span>Technology Group</span></a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation">
+        <span class="hamburger"></span>
+      </label>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="aboutus.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="enquire.html" class="active">Enquiry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-header">
+      <div class="container">
+        <h1>Request a Free Assessment</h1>
+        <p>No obligation, no jargon. Just an honest look at what your business needs.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid-split">
+
+          <form class="form-card" action="#" method="post">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input class="form-control" type="text" id="name" name="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address <span class="required">*</span></label>
+                <input class="form-control" type="email" id="email" name="email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input class="form-control" type="tel" id="phone" name="phone">
+              </div>
+
+              <div class="form-group">
+                <label for="company">Business Name</label>
+                <input class="form-control" type="text" id="company" name="company">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select class="form-control" id="service" name="service">
+                <option value="">-- Please select --</option>
+                <option value="it-support">IT Support</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="cloud">Cloud Management</option>
+                <option value="consulting">IT Consulting</option>
+                <option value="web">Web Development</option>
+                <option value="home">Home / Industry Solutions</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Tell us about your needs</label>
+              <textarea class="form-control" id="message" name="message" rows="6"></textarea>
+              <p class="form-note">The more detail you give us, the better we can prepare.</p>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--block">Submit Enquiry</button>
+
+          </form>
+
+          <aside>
+            <div class="content-block">
+              <h3>What happens next?</h3>
+              <ol>
+                <li>We read your enquiry within one business day.</li>
+                <li>We call or email to schedule a short discovery chat.</li>
+                <li>We run a free assessment and send you a plain-language summary.</li>
+              </ol>
+            </div>
+
+            <div class="content-block">
+              <h3>Prefer to talk?</h3>
+              <p>Call us directly on <a href="tel:+27785160045">+27 78 516 0045</a> during business hours.</p>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">Kraft <span>Technology Group</span></a>
+          <p>Technology solutions for businesses, homes and industries across the East Rand.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <ul>
+            <li><a href="enquire.html">Request Assessment</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="tel:+27785160045">+27 78 516 0045</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Kraft Technology Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
