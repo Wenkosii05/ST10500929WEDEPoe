@@ -13,11 +13,15 @@ clients, and generate qualified leads through a free assessment enquiry form.
 The website is built with pure HTML only no CSS, no JavaScript, and no
 external dependencies. This ensures maximum cross-browser compatibility and
 instant loading on any device.
+**UPDATE PART 2**
+As of Part 2, the website now uses a **separate external stylesheet** (`style.css`)
+linked from every HTML page. The HTML structure remains semantic and
+JavaScript-free, while the CSS handles all presentation, layout and responsive
+behaviour.
 
 **Project Status:** Part 1 complete (HTML pages built)
 ---
-
-## Website Goals and Objectives
+**Project Status:** Part 2 complete (CSS styling added)
 
 ### Primary Goals
 
@@ -48,7 +52,6 @@ instant loading on any device.
 - Industrial clients requiring on-site technical solutions
 - Business owners in Katlehong and the broader East Rand / Gauteng region
 
----
 
 ## Key Features and Functionality
 
@@ -115,11 +118,131 @@ Lead-generation form with the following fields:
 ### 8. Cross-Browser Compatibility
 
 - No JavaScript dependencies — works with JavaScript disabled
-- No external fonts or stylesheets — nothing can fail to load
-- Uses standard HTML elements supported by all major browsers
+- CSS reset ensures consistent baseline across Chrome, Firefox, Safari, Edge
+- System font stack — no external font requests that can fail
+- Standard HTML5 semantic elements
+- Vendor-neutral CSS (autoprefixer not required for modern browsers)
 - Viewport meta tag ensures correct mobile rendering
+- Uses widely supported features: CSS Grid, Flexbox, custom properties,
+  `clamp()`, `:focus-visible`, `prefers-reduced-motion`
 
----
+### 9. Responsive Design
+
+- Mobile-first layout
+- Hamburger navigation below 820px
+- Fluid typography using `clamp()`
+- Auto-fitting card grids
+- Asymmetric two-column layouts above 900px
+- Fully tested from 320px to 1400px+
+## Styling and CSS Architecture
+
+### Stylesheet Naming Convention
+
+The project uses a single stylesheet named **`style.css`** — lowercase, single
+descriptive word, no spaces, no version numbers.
+### Class Naming Convention
+
+All CSS classes use **kebab-case** (e.g. `.site-header`, `.service-card`,
+`.nav-toggle-label`). A **BEM-inspired modifier pattern** is used for variants:
+
+- Block: `.btn`, `.card`, `.nav-list`
+- Modifier: `.btn--primary`, `.btn--ghost`, `.btn--block`
+- State: `.active`
+
+### Design Tokens (CSS Custom Properties)
+
+All colours, fonts, spacing and sizing are controlled from a single `:root`
+block, so the entire site's look can be changed from one place. Tokens are
+prefixed for clarity:
+
+| Prefix | Purpose | Example |
+|--------|---------|---------|
+| `--clr-` | Colours | `--clr-accent: #00b4d8` |
+| `--fs-` | Font sizes | `--fs-lg` (fluid via `clamp()`) |
+| `--sp-` | Spacing scale | `--sp-md: 1.5rem` |
+| `--ff-` | Font families | `--ff-base` |
+| `--radius-` | Border radii | `--radius-md: 8px` |
+| `--shadow-` | Box shadows | `--shadow-md` |
+
+### CSS Reset
+
+The stylesheet opens with a **modern CSS reset** (Section 1 of `style.css`)
+that ensures consistent rendering across browsers:
+
+- Universal `box-sizing: border-box`
+- Zeroed default margins and padding
+- `text-size-adjust` normalised for mobile Safari / Chrome
+- Media elements set to `display: block; max-width: 100%`
+- Form controls inherit font and colour from their parent
+- Lists, tables and blockquotes neutralised
+- `list-style` removed only when `role="list"` is present (preserves accessibility)
+
+### Layout Techniques Used
+
+| Technique | Where Used |
+|-----------|-----------|
+| **Flexbox** | Header bar, navigation menu, footer brand row, hero action buttons, info cards |
+| **CSS Grid — auto-fit** | `.grid-auto` for service cards, stats strip, contact info cards |
+| **CSS Grid — asymmetric split** | `.grid-split` (1.6fr / 1fr) on About, Enquiry and Contact pages |
+| **CSS Grid — form rows** | `.form-row` puts paired form fields side-by-side above 640px |
+| **Sticky positioning** | `.site-header` stays fixed at top while scrolling |
+| **Layered gradients** | Hero and CTA bands use linear + radial gradients for depth |
+| **Pseudo-elements** | Decorative glows (`::after`), checkmarks on list items (`::before`), active nav indicator |
+
+### Default Styles Set
+
+- **Font family:** System font stack (`-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, …`) — instant loading, no external requests
+- **Font sizes:** Fluid using `clamp()` — scale smoothly between mobile and desktop without breakpoints
+- **Colour scheme:** Dark navy base (`#1a2332`), teal accent (`#00b4d8`), light grey background (`#f4f6f8`)
+- **Line height:** `1.65` for body text — improves readability
+- **Margins and padding:** Controlled by a consistent spacing scale (`--sp-xs` through `--sp-2xl`)
+- **Focus styles:** Visible `:focus-visible` outline for keyboard accessibility
+
+### Interactive Elements
+
+- **Navigation:** Hover colour change, active-page highlight with left border (mobile) or filled background (desktop)
+- **Hamburger menu:** Animated transition from three lines to an X when open (CSS-only, via checkbox hack)
+- **Buttons:** Lift on hover (`translateY(-2px)`), shadow grows, pressed state on `:active`
+- **Cards:** Lift with larger shadow on hover, subtle gradient overlay fades in
+- **Form fields:** Border colour shifts on hover, accent border + soft glow ring on focus
+- **Footer links:** Slide right slightly on hover
+- **Info cards:** Lift on hover
+
+### Responsive Design
+
+The site is **mobile-first** and uses a mix of fluid sizing and breakpoints:
+
+| Breakpoint | Target | What Changes |
+|-----------|--------|--------------|
+| (base) | Mobile (< 640px) | Single-column layout, hamburger nav, stacked cards |
+| `640px` | Large phone / small tablet | Form rows become two-column |
+| `720px` | Tablet | Footer becomes three-column grid |
+| `820px` | Small laptop | Hamburger replaced by horizontal nav bar |
+| `900px` | Desktop | `.grid-split` becomes asymmetric two-column layout |
+
+**Responsive techniques used:**
+
+- **Fonts:** `clamp()` scales every heading and body size fluidly
+- **Images:** Reset ensures `max-width: 100%; height: auto` on all media
+- **Content:** Grid `auto-fit` + `minmax()` reflows cards automatically
+- **Spacing:** `padding-inline` and `padding-block` on containers keep layout balanced at every width
+- **Viewport meta tag:** Present on every page for correct mobile rendering
+
+### Accessibility Features
+
+- **Skip link** at the top of every page for keyboard users
+- **`:focus-visible`** outlines on all interactive elements
+- **`.visually-hidden`** helper class for screen-reader-only text
+- **`prefers-reduced-motion`** media query disables animations for users who request it
+- **Semantic landmarks:** `<header>`, `<nav>`, `<main>`, `<footer>`, `<aside>`, `<article>`
+- **ARIA labels** on the hamburger toggle and navigation regions
+- **Colour contrast** meets WCAG AA for body text and buttons
+
+### No JavaScript
+
+The entire site — including the mobile hamburger menu — works with **zero
+JavaScript**, using the CSS checkbox hack. This maximises cross-browser
+compatibility and ensures the site functions even if scripts are blocked.
 
 ## Site Map
 
@@ -148,6 +271,7 @@ Contact	contact.html	Phone, email, address, business hours, map
 | Services | `service.html` | Detailed service offerings across six categories |
 | Enquiry | `enquiry.html` | Free assessment request form (lead generation) |
 | Contact | `contact.html` | Contact details, business hours, map placeholder |
+| Stylesheet | `style.css` | Styling for all the web pages|
 
 ### Navigation Relationships
 
@@ -174,16 +298,21 @@ Contact	contact.html	Phone, email, address, business hours, map
 
 ## Future Enhancements
 
-- Add a CSS stylesheet for improved visual design
+- Add a CSS stylesheet for improved visual design **Part2 added**
 - Embed a live Google Map on the Contact page
 - Connect the enquiry form to a backend or email service
 - Add a blog or insights section for SEO
 - Add individual detail pages for each service
 - Implement analytics tracking for KPI measurement
 
----
+## References 
+datamanagement.hms.harvard.edu. (n.d.). File Naming Conventions. [online] Available at: https://datamanagement.hms.harvard.edu/plan-design/file-naming-conventions [Accessed 16 Sept. 2026].
+
+Abdellah Slimani (2024). Mastering File Naming: The Essential Guide for Every Developer - Sytelix Blog. [online] Sytelix. Available at: https://sytelix.com [Accessed 17 Sept. 2026].
+
+Isaac, N. (2023). File Naming Conventions: Best Practices, Examples, and Templates. [online] SuiteFiles. Available at: https://www.suitefiles.com/how-to-create-a-successful-file-naming-convention/ [Accessed 17 Sept. 2026].
 
 ## Author
 
 Musawenkosi Mnanzana
-ST10500929 - WEDE POE PART 1
+ST10500929 - WEDE POE PART 1 & 2
