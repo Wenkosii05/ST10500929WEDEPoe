@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /enquiry.html?*       # Don't index query-string duplicates
+Sitemap: https://www.krafttechnology.co.za/sitemap.xml
