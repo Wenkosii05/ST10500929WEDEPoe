@@ -1,18 +1,65 @@
 <!--
    Musawenkosi Mnanzana 
-   WEDE PART 2 - 
+   WEDE PART 3 - 
    ST10500929
-   CSS
+   CSS & js
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Kraft Technology Group — get in touch for IT support and solutions.">
+  <meta name="description" content="Contact Kraft Technology Group in Katlehong, East Rand. Phone, email, address and an interactive map of our location.">
+  <meta name="keywords" content="contact Kraft Technology Group, IT support Katlehong contact, East Rand IT company, Gauteng IT services">
+  <meta name="author" content="Kraft Technology Group">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1a2332">
+  <link rel="canonical" href="https://www.krafttechnology.co.za/contact.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kraft Technology Group">
+  <meta property="og:title" content="Contact | Kraft Technology Group">
+  <meta property="og:description" content="Find our office in Katlehong, East Rand — phone, email, address and interactive map.">
+  <meta property="og:url" content="https://www.krafttechnology.co.za/contact.html">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:image" content="https://www.krafttechnology.co.za/og-image.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | Kraft Technology Group">
+  <meta name="twitter:description" content="Find our office in Katlehong, East Rand — phone, email, address and interactive map.">
+  <meta name="twitter:image" content="https://www.krafttechnology.co.za/og-image.jpg">
+
   <title>Contact | Kraft Technology Group</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kraft Technology Group",
+    "image": "https://www.krafttechnology.co.za/og-image.jpg",
+    "url": "https://www.krafttechnology.co.za",
+    "telephone": "+27-11-000-0000",
+    "email": "info@krafttechnology.co.za",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Katlehong",
+      "addressRegion": "Gauteng",
+      "addressCountry": "ZA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.3333,
+      "longitude": 28.1500
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:00", "closes": "13:00" }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -32,8 +79,8 @@
           <li><a href="index.html">Home</a></li>
           <li><a href="aboutus.html">About Us</a></li>
           <li><a href="services.html">Services</a></li>
-          <li><a href="enquire.html">Enquiry</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="enquire.html">Enquire</a></li>
+          <li><a href="contactus.html" class="active">Contact Us</a></li>
         </ul>
       </nav>
     </div>
@@ -57,7 +104,7 @@
               <div class="card-icon">☎</div>
               <div>
                 <h4>Phone</h4>
-                <p><a href="tel:0785160045">+27 78 516 0045</a></p>
+                <p><a href="tel:+27785160045">+27 78 516 0045</a></p>
               </div>
             </div>
 
@@ -65,7 +112,7 @@
               <div class="card-icon">✉</div>
               <div>
                 <h4>Email</h4>
-                <p><a href="mailto:kraft.tech@icloud.com">kraft.tech@icloud.com</a></p>
+                <p><a href="mailto:info@krafttechnology.co.za">info@krafttechnology.co.za</a></p>
               </div>
             </div>
 
@@ -86,11 +133,13 @@
             </div>
           </div>
 
-          <div class="map-placeholder">
-            <div>
-              <strong>Map Location</strong>
-              <p>Embed a Google Map here showing the Katlehong office location.</p>
-            </div>
+          <!-- Interactive map — Leaflet loaded by script.js -->
+          <div id="map" role="region" aria-label="Map showing Kraft Technology Group location in Katlehong">
+            <noscript>
+              <p style="padding:2rem;text-align:center;">
+                Enable JavaScript to view the interactive map, or find us at Katlehong, East Rand, Gauteng.
+              </p>
+            </noscript>
           </div>
 
         </div>
@@ -128,7 +177,7 @@
           <h4>Get In Touch</h4>
           <ul>
             <li><a href="enquire.html">Request Assessment</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="contactus.html">Contact Us</a></li>
             <li><a href="tel:+27785160045">+27 78 516 0045</a></li>
           </ul>
         </div>
@@ -139,5 +188,7 @@
     </div>
   </footer>
 
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>

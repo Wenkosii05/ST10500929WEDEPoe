@@ -847,3 +847,124 @@ select.form-control {
     scroll-behavior: auto !important;
   }
 }
+
+/*  ADDITIONS — interactivity, search, form states, map, back-to-top*/
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Back-to-top button ---------- */
+.back-to-top {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--clr-accent);
+  color: var(--clr-dark);
+  font-size: 1.3rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  z-index: 200;
+}
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.back-to-top:hover { background: var(--clr-accent-dark); color: var(--clr-white); }
+
+/* ---------- Search bar (Services page) ---------- */
+.search-bar {
+  max-width: 560px;
+  margin: 0 auto var(--sp-lg);
+}
+.search-bar input[type="search"] {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  font-size: var(--fs-base);
+  border: 2px solid var(--clr-border);
+  border-radius: 50px;
+  background: var(--clr-white);
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.search-bar input[type="search"]:focus {
+  outline: none;
+  border-color: var(--clr-accent);
+  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.15);
+}
+#search-status {
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+  margin-top: var(--sp-xs);
+  min-height: 1.2em;
+}
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--clr-text-muted);
+  padding: var(--sp-lg) 0;
+}
+
+/* ---------- Form validation states ---------- */
+.form-control.is-invalid {
+  border-color: #d64545;
+  background: #fff5f5;
+}
+.form-control.is-invalid:focus {
+  border-color: #d64545;
+  box-shadow: 0 0 0 4px rgba(214, 69, 69, 0.18);
+}
+.form-error {
+  display: block;
+  color: #d64545;
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  margin-top: 0.35rem;
+}
+.form-error[hidden] { display: none; }
+
+/* ---------- Character counter ---------- */
+.char-counter {
+  display: block;
+  text-align: right;
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  margin-top: 0.35rem;
+}
+.char-counter.is-limit { color: #d64545; font-weight: 700; }
+
+/* ---------- Success message ---------- */
+.form-success {
+  background: #e6f7ee;
+  border-left: 4px solid #2ea36f;
+  color: #1e6b47;
+  padding: var(--sp-sm) var(--sp-md);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--sp-md);
+  font-weight: 600;
+}
+.form-success[hidden] { display: none; }
+
+/* ---------- Interactive map ---------- */
+#map {
+  height: 380px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+@media (min-width: 900px) {
+  #map { height: 520px; }
+}

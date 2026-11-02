@@ -6,13 +6,57 @@
 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Request a free IT assessment from Kraft Technology Group.">
+  <meta name="description" content="Request a free IT assessment from Kraft Technology Group — reliable technology support for businesses, homes and industry in Katlehong and the East Rand.">
+  <meta name="keywords" content="IT support Katlehong, free IT assessment, managed services East Rand, IT consultant Gauteng">
+  <meta name="author" content="Kraft Technology Group">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1a2332">
+  <link rel="canonical" href="https://www.krafttechnology.co.za/enquiry.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kraft Technology Group">
+  <meta property="og:title" content="Enquiry | Kraft Technology Group">
+  <meta property="og:description" content="Request a free IT assessment — no obligation, no jargon.">
+  <meta property="og:url" content="https://www.krafttechnology.co.za/enquiry.html">
+  <meta property="og:locale" content="en_ZA">
+  <meta property="og:image" content="https://www.krafttechnology.co.za/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Enquiry | Kraft Technology Group">
+  <meta name="twitter:description" content="Request a free IT assessment — no obligation, no jargon.">
+  <meta name="twitter:image" content="https://www.krafttechnology.co.za/og-image.jpg">
+
   <title>Enquiry | Kraft Technology Group</title>
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Enquiry — Kraft Technology Group",
+    "url": "https://www.krafttechnology.co.za/enquiry.html",
+    "about": {
+      "@type": "LocalBusiness",
+      "name": "Kraft Technology Group",
+      "telephone": "+27 78 516 0045",
+      "email": "kraft.tech@icloud.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Katlehong",
+        "addressRegion": "Gauteng",
+        "addressCountry": "ZA"
+      }
+    }
+  }
+  </script>
 </head>
 <body>
 
@@ -52,35 +96,51 @@
       <div class="container">
         <div class="grid-split">
 
-          <form class="form-card" action="#" method="post">
+          <form class="form-card" id="enquiry-form" action="#" method="post" novalidate>
+
+            <!-- Success message (hidden by default, shown by JS) -->
+            <div class="form-success" id="form-success" role="status" hidden>
+              ✅ Thanks! Your enquiry has been received. We'll respond within one business day.
+            </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Full Name <span class="required">*</span></label>
-                <input class="form-control" type="text" id="name" name="name" required>
+                <input class="form-control" type="text" id="name" name="name"
+                       autocomplete="name" required
+                       aria-describedby="name-error">
+                <span class="form-error" id="name-error" role="alert" hidden></span>
               </div>
 
               <div class="form-group">
                 <label for="email">Email Address <span class="required">*</span></label>
-                <input class="form-control" type="email" id="email" name="email" required>
+                <input class="form-control" type="email" id="email" name="email"
+                       autocomplete="email" required
+                       aria-describedby="email-error">
+                <span class="form-error" id="email-error" role="alert" hidden></span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input class="form-control" type="tel" id="phone" name="phone">
+                <input class="form-control" type="tel" id="phone" name="phone"
+                       autocomplete="tel" inputmode="tel"
+                       aria-describedby="phone-error">
+                <span class="form-error" id="phone-error" role="alert" hidden></span>
               </div>
 
               <div class="form-group">
                 <label for="company">Business Name</label>
-                <input class="form-control" type="text" id="company" name="company">
+                <input class="form-control" type="text" id="company" name="company"
+                       autocomplete="organization">
               </div>
             </div>
 
             <div class="form-group">
-              <label for="service">Service Needed</label>
-              <select class="form-control" id="service" name="service">
+              <label for="service">Service Needed <span class="required">*</span></label>
+              <select class="form-control" id="service" name="service"
+                      aria-describedby="service-error">
                 <option value="">-- Please select --</option>
                 <option value="it-support">IT Support</option>
                 <option value="cybersecurity">Cybersecurity</option>
@@ -89,12 +149,16 @@
                 <option value="web">Web Development</option>
                 <option value="home">Home / Industry Solutions</option>
               </select>
+              <span class="form-error" id="service-error" role="alert" hidden></span>
             </div>
 
             <div class="form-group">
               <label for="message">Tell us about your needs</label>
-              <textarea class="form-control" id="message" name="message" rows="6"></textarea>
-              <p class="form-note">The more detail you give us, the better we can prepare.</p>
+              <textarea class="form-control" id="message" name="message" rows="6"
+                        maxlength="1000"
+                        aria-describedby="message-error message-count"></textarea>
+              <span class="char-counter" id="message-count">0 / 1000 characters</span>
+              <span class="form-error" id="message-error" role="alert" hidden></span>
             </div>
 
             <button type="submit" class="btn btn--primary btn--block">Submit Enquiry</button>
@@ -153,5 +217,7 @@
     </div>
   </footer>
 
+  <script src="data.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
