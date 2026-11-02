@@ -238,12 +238,29 @@ The site is **mobile-first** and uses a mix of fluid sizing and breakpoints:
 - **ARIA labels** on the hamburger toggle and navigation regions
 - **Colour contrast** meets WCAG AA for body text and buttons
 
-### No JavaScript
+### JavaScript
 
-The entire site — including the mobile hamburger menu — works with **zero
-JavaScript**, using the CSS checkbox hack. This maximises cross-browser
-compatibility and ensures the site functions even if scripts are blocked.
+### Design Principles
 
+- **Progressive enhancement** — every page loads and functions without JavaScript.
+  JavaScript only improves the experience.
+- **Separation of concerns** — data lives in `data.js`; behaviour lives in `script.js`.
+- **Performance** — both scripts use `defer` so they never block page rendering.
+  Leaflet (the map library) is loaded **only on `contact.html`**, on demand.
+
+### What JavaScript Handles
+
+| Feature | Location | Behaviour |
+|---------|----------|-----------|
+| Footer year | All pages | Copyright year updates automatically |
+| Mobile menu | All pages | Closes after navigation, responds to `Escape` |
+| Scroll reveal | All pages | Cards fade in as they scroll into view (IntersectionObserver) |
+| Back-to-top button | All pages | Appears after 400px scroll, smooth-scrolls to top |
+| Dynamic services | `service.html` | Cards rendered from `siteData.services` |
+| Service search | `service.html` | Real-time filter by title, summary or feature |
+| Enquiry validation | `enquiry.html` | Per-field validation, inline errors, success message |
+| Character counter | `enquiry.html` | Live count on textarea (max 1000) |
+| Interactive map | `contact.html` | Leaflet + OpenStreetMap, marker with popup |
 ## Site Map
 
 ### Text-based Structure
@@ -260,6 +277,84 @@ About Us	about.html	Company story, mission, vision, why choose us
 Services	service.html	Detailed service offerings across six categories
 Enquiry	enquiry.html	Free assessment request form (lead generation)
 Contact	contact.html	Phone, email, address, business hours, map
+
+## Enquiry Form Validation
+
+The enquiry form uses **HTML5 validation attributes plus custom JavaScript**:
+
+- `novalidate` is set on the `<form>` so JavaScript controls the feedback
+- Each field has its own validation rule (`validationRules` in `script.js`)
+- On **blur**, the field is validated — errors appear immediately
+- On **input**, once a field has been marked invalid, it re-validates live
+- On **submit**, all fields are checked; the first invalid field receives focus
+- Errors are announced via `role="alert"` and shown inline below each field
+- Invalid fields receive `aria-invalid="true"` and a red border
+- A character counter tracks the textarea (`0 / 1000 characters`)
+- On successful submit, a green success message appears (`role="status"`) and
+  the form resets
+
+### Validation Rules
+
+| Field | Rule |
+|-------|------|
+| Name | At least 2 characters (required) |
+| Email | Must match standard email pattern (required) |
+| Phone | Optional; if entered, must be 7+ digits/spaces/`+()-.` |
+| Company | Optional (no validation) |
+| Service | Must select an option (required) |
+| Message | Optional; max 1000 characters |
+
+## SEO Tags and Performance
+
+### On-Page SEO
+
+Every page now includes:
+
+- **Descriptive `<title>`** — unique per page, includes brand and keyword
+- **Meta description** — unique, 140–160 character summary
+- **Meta keywords** — local and service-related terms
+- **Canonical URL** — prevents duplicate-content issues
+- **`lang="en-ZA"`** — region-specific language declaration
+- **`theme-color`** — colours the browser address bar on mobile
+- **Favicon reference** — `favicon.ico` at the site root
+- **`robots` meta** — explicit `index, follow`
+
+### Social / Open Graph
+
+Every page includes:
+
+- **Open Graph** (`og:title`, `og:description`, `og:url`, `og:image`,
+  `og:type`, `og:site_name`, `og:locale`) — controls previews on Facebook,
+  WhatsApp and LinkedIn
+- **Twitter Card** (`summary_large_image`) — controls X/Twitter previews
+
+### Structured Data (JSON-LD)
+
+Search engines can understand the business through schema.org markup:
+
+- **`index.html`** — `LocalBusiness`
+- **`about.html`** — `Organization`
+- **`service.html`** — `Service` with `OfferCatalog`
+- **`contact.html`** — `LocalBusiness` with `GeoCoordinates` and
+  `openingHoursSpecification`
+- **`enquiry.html`** — `ContactPage`
+
+### Off-Page SEO Files
+
+- **`sitemap.xml`** — lists all five pages with priorities and change frequency
+  for search engines to discover.
+- **`robots.txt`** — allows crawling, blocks duplicate query-string pages,
+  and points crawlers at the sitemap.
+
+### Performance Optimisations
+
+- `defer` on all scripts — no render-blocking
+- Leaflet loaded only on the page that needs it (`contact.html`)
+- CSS reset uses efficient selectors
+- No web fonts — instant rendering with system stack
+- No images in markup — nothing to optimise yet (add `width`, `height`,
+  `loading="lazy"` and `alt` attributes when images are added)
+- Semantic HTML — faster parsing, better accessibility
 
 
 ### Page Directory
@@ -299,7 +394,7 @@ Contact	contact.html	Phone, email, address, business hours, map
 ## Future Enhancements
 
 - Add a CSS stylesheet for improved visual design **Part2 added**
-- Embed a live Google Map on the Contact page
+- Embed a live Google Map on the Contact page **Part 3 added**
 - Connect the enquiry form to a backend or email service
 - Add a blog or insights section for SEO
 - Add individual detail pages for each service
@@ -315,4 +410,4 @@ Isaac, N. (2023). File Naming Conventions: Best Practices, Examples, and Templat
 ## Author
 
 Musawenkosi Mnanzana
-ST10500929 - WEDE POE PART 1 & 2
+ST10500929 - WEDE POE PART 1 & 2 & 3 
