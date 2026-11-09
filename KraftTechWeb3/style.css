@@ -1,0 +1,274 @@
+/*
+    Musa Mnanzana
+    ST10500929
+    WEDE POE 3
+*/
+/* Body and general text */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.9;
+}
+
+/* Header and navigation */
+header {
+    background-color: #1a2332;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0 0 15px 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #00b4d8;
+}
+
+nav a.active {
+    color: #00b4d8;
+    text-decoration: underline;
+}
+
+/* Main content area */
+main {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #1a2332;
+}
+
+h3 {
+    color: #1a2332;
+}
+
+/* Hero section on home page */
+.hero {
+    background-color: #2d3e50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    color: white;
+    margin-top: 0;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    background-color: #00b4d8;
+    color: #1a2332;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #0096b7;
+    color: white;
+}
+
+/* Slideshow on home page */
+.slideshow {
+    position: relative;
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 8px;
+    border-top: 4px solid #00b4d8;
+    height: 160px; /* Fixed height so the box doesn't jump around */
+    margin-bottom: 20px;
+}
+
+/* Every slide sits on top of each other, invisible */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    
+    /* This centers the content horizontally and vertically */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* The slide with "show" fades in and sits on top */
+.slide.show {
+    opacity: 1;
+    z-index: 2;
+    transition: opacity 0.5s ease; 
+}
+
+/* Slide buttons */
+.slide-buttons {
+    text-align: center;
+}
+
+.slide-buttons button {
+    background-color: #1a2332;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slide-buttons button:hover {
+    background-color: #00b4d8;
+    color: #1a2332;
+}
+
+/* Counter below the slideshow */
+.slide-counter {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Counter below the slideshow */
+.slide-counter {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+}
+/* Service items on services page */
+.service-item {
+    background-color: #f4f6f8;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #00b4d8;
+    border-radius: 4px;
+}
+
+/* Search box */
+#searchBox {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+#searchResult {
+    color: #666;
+    font-style: italic;
+}
+
+/* Form styles */
+form {
+    background-color: #f4f6f8;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+button {
+    background-color: #00b4d8;
+    color: #1a2332;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0096b7;
+    color: white;
+}
+
+/* Messages on the form */
+.error {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Contact page */
+.contact-info p {
+    margin: 10px 0;
+}
+
+/* Footer */
+footer {
+    background-color: #1a2332;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+/* Responsive: makes things stack on small screens */
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .service-box {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}
