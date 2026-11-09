@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services - Kraft Technology Group</title>
+    <meta name="description" content="IT services offered by Kraft Technology Group in Katlehong.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Kraft Technology Group</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="enquiry.html">Enquiry</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Our Services</h2>
+        <p>Type in the box below to search for a service:</p>
+
+        <input type="text" id="searchBox" placeholder="Search services..." onkeyup="searchServices()">
+
+        <div id="serviceList">
+
+            <div class="service-item">
+                <h3>IT Support</h3>
+                <p>We keep your computers and network running smoothly.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Cybersecurity</h3>
+                <p>We protect your business from online threats.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Web Development</h3>
+                <p>We help you store your files online and back up your important data.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>IT Consulting</h3>
+                <p>We give advice on what technology to buy and how to use it better.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Printer Services</h3>
+                <p>We build websites for small businesses that need to be found online.</p>
+            </div>
+
+            <div class="service-item">
+                <h3>Home and Industry Solutions</h3>
+                <p>We help households and factories with their technology problems.</p>
+            </div>
+
+        </div>
+
+        <p id="searchResult"></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kraft Technology Group. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
