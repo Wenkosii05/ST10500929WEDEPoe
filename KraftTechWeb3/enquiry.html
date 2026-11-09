@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enquiry - Kraft Technology Group</title>
+    <meta name="description" content="Request a free IT assessment from Kraft Technology Group.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Kraft Technology Group</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="service.html">Services</a>
+            <a href="enquiry.html" class="active">Enquiry</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Request a Free Assessment</h2>
+        <p>Fill in the form below and we will contact you within one business day.</p>
+
+        <form onsubmit="return validateForm()">
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="email">Email Address:</label>
+            <input type="text" id="email" name="email">
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone">
+
+            <label for="service">Service Needed:</label>
+            <select id="service" name="service">
+                <option value="">-- Please select --</option>
+                <option value="it-support">IT Support</option>
+                <option value="cybersecurity">Cybersecurity</option>
+                <option value="cloud">Cloud Management</option>
+                <option value="consulting">IT Consulting</option>
+                <option value="web">Web Development</option>
+                <option value="home">Home and Industry</option>
+            </select>
+
+            <label for="message">Tell us about your needs:</label>
+            <textarea id="message" name="message"></textarea>
+
+            <p id="error-message" class="error"></p>
+            <p id="success-message" class="success"></p>
+
+            <button type="submit">Submit Enquiry</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Kraft Technology Group. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
