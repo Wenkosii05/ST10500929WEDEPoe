@@ -97,7 +97,7 @@ h3 {
     padding: 20px;
     border-radius: 8px;
     border-top: 4px solid #00b4d8;
-    height: 160px; /* Fixed height so the box doesn't jump around */
+    height: 180px; /* Fixed height so the box doesn't jump around */
     margin-bottom: 20px;
 }
 
@@ -116,7 +116,7 @@ h3 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 15px;
 }
 
 /* The slide with "show" fades in and sits on top */
@@ -261,14 +261,21 @@ footer {
 
 /* Responsive: makes things stack on small screens */
 @media (max-width: 600px) {
-    nav a {
-        display: block;
-        margin: 5px 0;
+    header h1 {
+        font-size: 24px; 
     }
 
-    .service-box {
+    nav a{
         display: block;
-        width: 100%;
-        margin: 10px 0;
+        margin: 8px 0;
+        padding: 8px;
+        background-color: #2d3e50;
+        border-radius: 4px;
     }
+
+    main {
+        margin: 10px;
+        padding: 15px;
+    }
+
 }
